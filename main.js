@@ -114,9 +114,9 @@ async function findUsernameById(id) {
     const response = await axios.get(url, {
       headers: requestHeaders,
     });
-    
+
     console.log(JSON.stringify(response.data), null, 2);
-    return response.data && response.data.user.username;
+    return response.data && response.data.user && response.data.user.username;
   });
 }
 
