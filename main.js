@@ -1,10 +1,10 @@
-import axios from "axios";
-import fs from "fs/promises";
-import path from 'path';
-import fsLegacy from 'fs'
-import datefns from 'date-fns'
-import dotenv from 'dotenv'
-import schedule from 'node-schedule'
+const axios = require("axios").default
+const fs = require("fs/promises")
+const path = require('path')
+const fsLegacy = require('fs')
+const datefns = require('date-fns')
+const dotenv = require('dotenv')
+const schedule = require('node-schedule')
 
 dotenv.config();
 
@@ -153,6 +153,7 @@ function configuredUserIds() {
 let index = 0;
 
 if (process.env.USER_IDS) {
+  
   schedule.scheduleJob(process.env.APP_CRON, async () => {
     const userIds = configuredUserIds();
     if (!userIds.length) {
