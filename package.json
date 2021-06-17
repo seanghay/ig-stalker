@@ -1,0 +1,19 @@
+{
+  "name": "ig-stalker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Seanghay Yath <seanghay.dev@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cuid": "^2.1.8",
+    "date-fns": "^2.22.1",
+    "dotenv": "^10.0.0",
+    "node-schedule": "^2.0.0"
+  }
+}
