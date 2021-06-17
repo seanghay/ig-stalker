@@ -144,10 +144,6 @@ function createFilenameJSON() {
   return `${name}.json`
 }
 
-// await main({
-//   userId: '1707206673'
-// });
-
 function configuredUserIds() {
   const value = process.env.USER_IDS;
   if (!value) return [];
@@ -156,12 +152,16 @@ function configuredUserIds() {
 
 let index = 1;
 
-schedule.scheduleJob('0 * * * *', async () => {
-  const userIds = configuredUserIds();
-  if (!userIds.length) {
-    return;
-  }
-  const i = index % (userIds.length);
-  await main({ userId: userIds[i] });
-  index++;
-})
+if (process.env.USER_IDS) {
+  schedule.scheduleJob('0 * * * *', async () => {
+    const userIds = configuredUserIds();
+    if (!userIds.length) {
+      return;
+    }
+    const i = index % (userIds.length);
+    await main({ userId: userIds[i] });
+    index++;
+  })  
+} else {
+  throw new Error('not USER_IDS')
+}
