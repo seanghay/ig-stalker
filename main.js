@@ -153,7 +153,7 @@ function configuredUserIds() {
 let index = 1;
 
 if (process.env.USER_IDS) {
-  schedule.scheduleJob('0 * * * *', async () => {
+  schedule.scheduleJob(process.env.APP_CRON, async () => {
     const userIds = configuredUserIds();
     if (!userIds.length) {
       return;
@@ -163,5 +163,5 @@ if (process.env.USER_IDS) {
     index++;
   })  
 } else {
-  throw new Error('not USER_IDS')
+  throw new Error('no USER_IDS')
 }
