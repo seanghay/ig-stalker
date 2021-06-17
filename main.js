@@ -150,7 +150,7 @@ function configuredUserIds() {
   return value.split(',').map(it => it.trim())
 }
 
-let index = 1;
+let index = 0;
 
 if (process.env.USER_IDS) {
   schedule.scheduleJob(process.env.APP_CRON, async () => {
@@ -162,6 +162,9 @@ if (process.env.USER_IDS) {
     await main({ userId: userIds[i] });
     index++;
   })  
+
+  console.log('app has started')
+
 } else {
   throw new Error('no USER_IDS')
 }
